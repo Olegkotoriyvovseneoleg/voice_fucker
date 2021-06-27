@@ -35,32 +35,14 @@ func main() {
 
 	// get new updates
 	for update := range updates {
-		// if message from channel
-		if update.ChannelPost != nil {
-      log.Printf("Chat message %s", update.ChannelPost.Chat.ID)
-  		// if message from user
-  		if update.ChannelPost != nil {
-        log.Printf("Chat message text %s", update.Message.Text)
-  		}
-
-      if update.ChannelPost.Voice != nil {
-        log.Printf("Chat message is voice")
-        log.Printf("Chat message duration %d", update.Message.Voice.Duration)
-      }
-
-			replyMessage(update.ChannelPost.Chat.ID, update.ChannelPost.MessageID, bot)
-		}
-
 		// if message from user
 		if update.Message != nil {
-      log.Printf("Message text %s", update.Message.Text)
-		}
+	    if update.Message.Voice != nil {
+	      log.Printf("Message is voice, duration %d", update.Message.Voice.Duration)
 
-    if update.Message.Voice != nil {
-      log.Printf("Message is voice")
-      log.Printf("message duration %d", update.Message.Voice.Duration)
-			replyMessage(update.Message.Chat.ID, update.Message.MessageID, bot)
-    }
+				replyMessage(update.Message.Chat.ID, update.Message.MessageID, bot)
+	    }
+		}
 	}
 }
 
