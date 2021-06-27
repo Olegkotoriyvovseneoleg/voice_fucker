@@ -2,22 +2,10 @@ package main
 
 import (
 	"log"
-	"math/rand"
 	"os"
 
 	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
-var badWords = []string{
-	"в очко себе это надиктуй",
-	"что за ебанный писк?",
-	"у меня кошка, когда блюет, ито звучит лучше",
-	"судя по интонации у тебя явные признаки ДЦП",
-}
-
-// GetBadWord ...
-func GetBadWord() string {
-	return badWords[rand.Intn(len(badWords))]
-}
 
 func _check(err error) {
 	if err != nil {
